@@ -52,8 +52,10 @@ const mensData = JSON.parse(localStorage.getItem('mensProduct')) || []
 
 const womensData = JSON.parse(localStorage.getItem('womensProduct')) || []
 
-
+let count  = document.querySelector('.countProduct');
 if (key === 'Mens') {
+     
+     count.innerHTML = `(${mensData.length})`
      productDataShow(mensData);
      shortByPrice(mensData);
      filterCategorys(mensData)
@@ -64,6 +66,7 @@ if (key === 'Mens') {
      fillterDesign(mensData)
      fillterDiscount(mensData)
 } else if (key === 'Womens') {
+     count.innerHTML = `(${womensData.length})`
      productDataShow(womensData);
      shortByPrice(womensData);
      filterCategorys(womensData)

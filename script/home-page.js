@@ -143,4 +143,3 @@ window.addEventListener('load', function () {
     loadingContainer.style.display = 'none';
   }, 1000); // 10000 milliseconds (10 seconds)
 });
-
