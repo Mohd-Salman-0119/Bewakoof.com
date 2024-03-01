@@ -1,5 +1,9 @@
 const { mongoose } = require("../imports/modules.imports")
 const productSchema = new mongoose.Schema({
+     image: {
+          type: String,
+          required: true
+     },
      name: {
           type: String, required: true
      },
@@ -7,12 +11,8 @@ const productSchema = new mongoose.Schema({
           type: Number,
           required: true
      },
-     currency: {
-          type: String,
-          required: true
-     },
-     price: {
-          type: String,
+     original_price: {
+          type: Number,
           required: true
      },
      offer: {
@@ -23,7 +23,15 @@ const productSchema = new mongoose.Schema({
           type: String,
           required: true
      },
-     rating: {
+     size: {
+          type: String,
+          required: true
+     },
+     brand: {
+          type: String,
+          required: true
+     },
+     color: {
           type: String,
           required: true
      },
@@ -31,20 +39,8 @@ const productSchema = new mongoose.Schema({
           type: String,
           required: true
      },
-     avatar: {
-          type: String, // Array of image URLs
-          required: true
-     },
-     color: {
-          type: String,
-          required: true
-     },
-     size :{
-          type: String,
-          required: true
-     },
-     brand: {
-          type: String,
+     rating: {
+          type: Number,
           required: true
      }
 });

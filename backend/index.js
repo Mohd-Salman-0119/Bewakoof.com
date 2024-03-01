@@ -1,6 +1,6 @@
 const { express, cors } = require("./imports/modules.imports")
 const { connectDB } = require("./imports/config.imports")
-// const { authRoutes, productRoutes } = require("./imports/routes.import")
+const { authRoutes, productRoutes } = require("./imports/routes.imports")
 
 const app = express();
 
@@ -8,12 +8,12 @@ const app = express();
 app.use(express.json())
 app.use(cors())
 
-app.use("/", (req, res) => {
+app.use("/ping", (req, res) => {
      res.send({ msg: "API is working" });
 })
 
-// app.use('/api', authRoutes)
-// app.use('/api/products', productRoutes)
+app.use('/api', authRoutes)
+app.use('/api/products', productRoutes)
 
 
 const PORT = process.env.PORT || 8000;

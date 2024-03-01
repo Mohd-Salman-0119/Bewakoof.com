@@ -55,7 +55,7 @@ var swiper = new Swiper(slide, {
   },
   autoplay: {
     delay: 2600, // Auto-play delay in milliseconds (2.5 seconds)
-    disableOnInteraction: false, // Enable auto-play even when the user interacts with the slider
+    disableOnInteraction: true, // Enable auto-play even when the user interacts with the slider
   },
   breakpoints:{
     990:{

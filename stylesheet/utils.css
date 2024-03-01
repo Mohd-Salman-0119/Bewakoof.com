@@ -304,6 +304,9 @@ i {
 .top4px {
      margin-top: 4px;
 }
+.tp4px {
+     margin: 4px 0px;
+}
 .top10px {
      margin-top: 1.5rem;
 }

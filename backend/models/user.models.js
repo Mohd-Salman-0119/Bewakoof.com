@@ -2,17 +2,6 @@
 const { mongoose, bcrypt } = require("../imports/modules.imports");
 
 const userSchema = new mongoose.Schema({
-     cart: [
-          {
-               productId: {
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: 'Product'
-               },
-               quantity: {
-                    type: Number
-               }
-          }
-     ],
      email: {
           type: String,
           required: true,
@@ -33,15 +22,26 @@ const userSchema = new mongoose.Schema({
      wishlist: [
           {
                type: mongoose.Schema.Types.ObjectId, // Assuming wishlist item refers to the ObjectId of a product document
-               ref: 'Product'
+               ref: 'products'
           }
      ],
      orders: [
           {
                type: mongoose.Schema.Types.ObjectId, // Assuming wishlist item refers to the ObjectId of a product document
-               ref: 'Product'
+               ref: 'products'
           }
-     ]
+     ],
+     cart: [
+          {
+               productId: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'products'
+               },
+               quantity: {
+                    type: Number
+               }
+          }
+     ],
 });
 userSchema.pre('save', async function (next) {
      if (this.isModified('password') || this.isNew) {

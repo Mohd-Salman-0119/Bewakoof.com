@@ -1,7 +1,8 @@
+const BASE_URL = 'http://localhost:8000/api'
+
 fetch('/json/fillters.json')
      .then(res => res.json())
      .then(data => {
-
           filltersFunction(data.filterVanue, '.filterCategory', "Category")
           filltersFunction(data.filtersizes, '.filterSizes', "Sizes")
           filltersFunction(data.filterbrand, '.filterBrand', "Brand")
@@ -32,50 +33,117 @@ function filltersFunction(data, referance, name) {
 
 }
 
-fetch('/json/products.json')
-     .then(res => res.json())
-     .then(data => {
-
-          localStorage.setItem('mensProduct', JSON.stringify(data.mensProduct));
-          localStorage.setItem('womensProduct', JSON.stringify(data.womensProduct));
-
-
-     })
-
-
 const rcieved = new URLSearchParams(window.location.search);
 // const womensRcieved = new URLSearchParams(window.location.search);
 const key = rcieved.get('category');
 
+let count = document.querySelector('.countProduct');
 
-const mensData = JSON.parse(localStorage.getItem('mensProduct')) || []
+if (key === "Mens") {
+     const mensQuery = "_gender=male"
+     const fetchedCloser = fetchProduct(mensQuery)
+     fetchedCloser()
+     sortByPrice(fetchedCloser)
 
-const womensData = JSON.parse(localStorage.getItem('womensProduct')) || []
+     // filter by categories  
+     fillterCategory(fetchedCloser)
+     fillterBrand(fetchedCloser)
+     fillterSizes(fetchedCloser)
+     fillterDesign(fetchedCloser)
+     fillterColor(fetchedCloser)
+     fillterRating(fetchedCloser)
 
-let count  = document.querySelector('.countProduct');
-if (key === 'Mens') {
-     
-     count.innerHTML = `(${mensData.length})`
-     productDataShow(mensData);
-     shortByPrice(mensData);
-     filterCategorys(mensData)
-     fillterBrand(mensData)
-     fillterSizes(mensData)
-     fillterColor(mensData)
-     fillterRating(mensData)
-     fillterDesign(mensData)
-     fillterDiscount(mensData)
-} else if (key === 'Womens') {
-     count.innerHTML = `(${womensData.length})`
-     productDataShow(womensData);
-     shortByPrice(womensData);
-     filterCategorys(womensData)
-     fillterSizes(womensData)
-     fillterBrand(womensData)
-     fillterColor(womensData)
-     fillterDesign(womensData)
-     fillterRating(womensData)
-     fillterDiscount(womensData)
+} else {
+     const mensQuery = "_gender=female"
+     const fetchedCloser = fetchProduct(mensQuery)
+     fetchedCloser()
+     sortByPrice(fetchedCloser)
+
+     // filter by categories  
+     fillterCategory(fetchedCloser)
+     fillterBrand(fetchedCloser)
+     fillterSizes(fetchedCloser)
+     fillterDesign(fetchedCloser)
+     fillterColor(fetchedCloser)
+     fillterRating(fetchedCloser)
+}
+
+function sortByPrice(fetchedCloser) {
+     const sortPrice = document.querySelector('.sortPrice');
+     sortPrice.addEventListener('change', () => {
+          const selectedValue = sortPrice.value;
+          fetchedCloser(`_sort=${selectedValue}`)
+     })
+}
+function fillterSizes(fetchedCloser) {
+     const selected = document.querySelector('.filterSizes');
+
+     selected.addEventListener('change', () => {
+          const selectedValue = selected.value;
+          fetchedCloser(`_size=${selectedValue}`)
+     })
+}
+
+function fillterCategory(fetchedCloser) {
+     const categoriesFilter = document.querySelector('.filterCategory');
+
+     categoriesFilter.addEventListener('change', () => {
+          const selectedValue = categoriesFilter.value;
+          console.log(selectedValue)
+          fetchedCloser(`_category=${selectedValue}`)
+     })
+}
+function fillterBrand(fetchedCloser) {
+     const selected = document.querySelector('.filterBrand');
+
+     selected.addEventListener('change', () => {
+          const selectedValue = selected.value;
+          fetchedCloser(`_brand=${selectedValue}`)
+     })
+}
+
+function fillterDesign(fetchedCloser) {
+     const selected = document.querySelector('.filterDesigns');
+     selected.addEventListener('change', () => {
+          const selectedValue = selected.value;
+          fetchedCloser(`_design=${selectedValue}`)
+     })
+}
+
+function fillterRating(fetchedCloser) {
+     const selected = document.querySelector('.filterRatings');
+
+     selected.addEventListener('change', () => {
+          const selectedValue = selected.value;
+          fetchedCloser(`_rating=${selectedValue}`)
+     })
+}
+
+function fillterColor(fetchedCloser) {
+     const selected = document.querySelector('.filterColor');
+
+     selected.addEventListener('change', () => {
+          const selectedValue = selected.value;
+          fetchedCloser(`_color=${selectedValue}`)
+     })
+}
+
+// Fetch Product with query
+function fetchProduct(query) {
+     return function (value = "") {
+          fetch(`${BASE_URL}/products?${query}&${value}`)
+               .then(res => res.json())
+               .then(data => {
+                    count.innerHTML = `(${data.length})`
+                    console.log(data)
+                    productDataShow(data)
+               })
+               .catch(error => {
+                    count.innerHTML = data.length
+                    console.log(error)
+               })
+          console.log(query, value)
+     }
 }
 
 
@@ -160,7 +228,7 @@ function productDataShow(data) {
           priceWithR.innerHTML = `&#x20B9;`;
 
           discountedPrice.appendChild(priceWithR);
-          discountedPrice.innerHTML = `&#x20B9; ${ele.price}`;
+          discountedPrice.innerHTML = `&#x20B9; ${ele.discounted_price}`;
 
 
           let actualPriceText = document.createElement('div');
@@ -171,7 +239,7 @@ function productDataShow(data) {
           // actualPriceText.classList.add('top4px')
           actualPriceText.classList.add('line-through-text')
 
-          actualPriceText.innerHTML = `&#x20B9;${ele.price2}`
+          actualPriceText.innerHTML = `&#x20B9;${ele.original_price}`
 
           let discountPresent = document.createElement('div');
           discountPresent.classList.add('discountPresent')
@@ -186,205 +254,10 @@ function productDataShow(data) {
 
           productDetails.append(dFlex, productPriceBox);
 
-          image.src = ele.avatar;
+          image.src = ele.image;
           card.append(image, productDetails);
 
           cardContainer.append(card)
-
-     })
-}
-
-
-function shortByPrice(data) {
-     // short by price
-     const selected = document.querySelector('.sortPrice');
-     selected.addEventListener('change', () => {
-          
-          const selectedValue = selected.value;
-          // alert(selectedValue);
-          if (selectedValue === 'HTL') {
-               const htl = data.sort((a, b) => {
-                    const aNum = Number(a.price);
-                    const bNum = Number(b.price);
-                    
-                    return bNum - aNum;
-               })
-               productDataShow(htl);
-          }
-          else if (selectedValue === 'LTH') {
-               const lth = data.sort((a, b) => {
-                    const aNum = Number(a.price);
-                    const bNum = Number(b.price);
-                    
-                    return  aNum -bNum;
-               })
-               productDataShow(lth);
-          }
-          else if (selectedValue === 'popular') {
-              const papuler =  data.sort(function (a,b) {
-               const aNum = Number(a.price);
-               const bNum = Number(b.price);
-                    if (aNum > 300) {
-                      return -1
-                    }
-                    if (bNum < 300) {
-                      return 1;
-                    }
-                    else {
-                      0;
-                    }
-                  });
-                  productDataShow(papuler);
-          }else{
-               productDataShow(data);
-          }
-
-
-         
-     })
-
-}
-
-function filterCategorys(data){
-     const selected = document.querySelector('.filterCategory');
-
-     selected.addEventListener('change', ()=>{
-          const selectedValue = selected.value;
-          
-          if(selectedValue === 'none'){
-               productDataShow(data)
-          }else{
-               console.log(data);
-               const fillterCategory = data.filter((ele)=>{
-                    return ele.category.toLowerCase() === selectedValue.toLowerCase()
-               })
-               
-               console.log(fillterCategory);
-               productDataShow(fillterCategory)
-          }
-
-     })
-}
-
-function fillterSizes(data){
-     const selected = document.querySelector('.filterSizes');
-
-     selected.addEventListener('change', ()=>{
-          const selectedValue = selected.value;
-          
-          if(selectedValue === 'none'){
-               productDataShow(data)
-          }else{
-               console.log(data);
-               const fillterCategory = data.filter((ele)=>{
-                    return ele.size.toLowerCase() === selectedValue.toLowerCase()
-               })
-               
-               // console.log(fillterCategory);
-               productDataShow(fillterCategory)
-          }
-
-     })
-}
-
-function fillterBrand(data){
-     const selected = document.querySelector('.filterBrand');
-
-     selected.addEventListener('change', ()=>{
-          const selectedValue = selected.value;
-          
-          if(selectedValue === 'none'){
-               productDataShow(data)
-          }else{
-               console.log(data);
-               const fillterCategory = data.filter((ele)=>{
-                    return ele.brand.toLowerCase() === selectedValue.toLowerCase()
-               })
-               
-               // console.log(fillterCategory);
-               productDataShow(fillterCategory)
-          }
-
-     })
-}
-
-function fillterDesign(data){
-     const selected = document.querySelector('.filterDesigns');
-
-     selected.addEventListener('change', ()=>{
-          const selectedValue = selected.value;
-          
-          if(selectedValue === 'none'){
-               productDataShow(data)
-          }else{
-               console.log(data);
-               const fillterCategory = data.filter((ele)=>{
-                    return ele.design.toLowerCase() === selectedValue.toLowerCase()
-               })
-               
-               // console.log(fillterCategory);
-               productDataShow(fillterCategory)
-          }
-
-     })
-}
-function fillterRating(data){
-     const selected = document.querySelector('.filterRatings');
-
-     selected.addEventListener('change', ()=>{
-          const selectedValue = selected.value;
-          
-          if(selectedValue === 'none'){
-               productDataShow(data)
-          }else{
-               console.log(data);
-               const fillterCategory = data.filter((ele)=>{
-                    return ele.Ratings.toLowerCase() === selectedValue.toLowerCase()
-               })
-               
-               // console.log(fillterCategory);
-               productDataShow(fillterCategory)
-          }
-
-     })
-}
-function fillterDiscount(data){
-     const selected = document.querySelector('.filterDiscount');
-
-     selected.addEventListener('change', ()=>{
-          const selectedValue = selected.value;
-          
-          if(selectedValue === 'none'){
-               productDataShow(data)
-          }else{
-               console.log(data);
-               const fillterCategory = data.filter((ele)=>{
-                    return ele.offer.toLowerCase() === selectedValue.toLowerCase()
-               })
-               
-               // console.log(fillterCategory);
-               productDataShow(fillterCategory)
-          }
-
-     })
-}
-function fillterColor(data){
-     const selected = document.querySelector('.filterColor');
-
-     selected.addEventListener('change', ()=>{
-          const selectedValue = selected.value;
-          
-          if(selectedValue === 'none'){
-               productDataShow(data)
-          }else{
-               console.log(data);
-               const fillterCategory = data.filter((ele)=>{
-                    return ele.colr.toLowerCase() === selectedValue.toLowerCase()
-               })
-               
-               // console.log(fillterCategory);
-               productDataShow(fillterCategory)
-          }
 
      })
 }

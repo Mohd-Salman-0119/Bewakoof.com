@@ -1,6 +1,4 @@
 
-const body = document.body;
-
 hideBottomHeader();
 searchedItems();
 

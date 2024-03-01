@@ -47,61 +47,33 @@
     "Adidas",
     "Nike"
   ],
-  "filterColors":[
-     "Color",
-     "Red",
-     "Blue",
-     "Black",
-     "Brown",
-     "White"
+  "filterColors": ["Color", "Red", "Blue", "Black", "Brown", "White"],
+  "filterDesign": [
+    "Design",
+    "Solid",
+    "Printed",
+    "Graphic Print",
+    "Plain",
+    "Typography"
   ],
-  "filterDesign":[
-     "Design",
-     "Solid",
-     "Printed",
-     "Graphic Print",
-     "Plain",
-     "Typography"
+  "filterfit": [
+    "Fit",
+    "Regular Fit",
+    "Slim Fit",
+    "Oversized",
+    "Relaxed Fit",
+    "Skinny Fit",
+    "Slim",
+    "Loose Fit"
   ],
-  "filterfit":[
-     "Fit",
-     "Regular Fit",
-     "Slim Fit",
-     "Oversized",
-     "Relaxed Fit",
-     "Skinny Fit",
-     "Slim",
-     "Loose Fit"
-  ],
-  "filtersleeve":[
-     "Sleeve",
-     "Half Sleeve",
-     "Full Sleeve",
-     "Sleeveless",
-     "Short Sleeve"
-
-  ],
-  "filterratings":[
-     "Ratings",
-     "4.5 and above",
-     "4 and above",
-     "3.5 and above",
-     "3 and above",
-     "2.5 and above",
-     "2 and above",
-     "1.5 and above"
-
-  ],
-  "filterdiscount":[
-     "Discount",
-     "10% Or More",
-     "20% Or More",
-     "30% Or More",
-     "40% Or More",
-     "50% Or More",
-     "60% Or More",
-     "70% Or More"
-     
-
+  "filterratings": [
+    "Ratings",
+    "4.5 and above",
+    "4 and above",
+    "3.5 and above",
+    "3 and above",
+    "2.5 and above",
+    "2 and above",
+    "1.5 and above"
   ]
 }
