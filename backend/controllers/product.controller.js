@@ -23,7 +23,7 @@ const getProductController = asyncHandler(async (req, res) => {
                     sortOptions = { discounted_price: 1 };
                }
           }
-          
+
           if (_category) {
                const categories = _category.split(",")
                query.category = { $in: categories }
@@ -51,6 +51,8 @@ const getProductController = asyncHandler(async (req, res) => {
           if (_q) {
                query.$or = [
                     { name: { $regex: _q, $options: 'i' } },
+                    { category: { $regex: _q, $options: 'i' } }
+
                ];
           }
           console.log(query)
