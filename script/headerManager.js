@@ -345,7 +345,7 @@ const mainBarWrapperHeader = `
 
           <div class="action-icons-button d-flex pd-10-15px">
             <!-- Todo! Login Text -->
-            <a href="#" class="reponsive-none">
+            <a href="/screens/login.html" class="reponsive-none">
               <i class="fa-regular fa-user"></i>
             </a>
             <i class="fa-solid fa-magnifying-glass d-none"> </i>

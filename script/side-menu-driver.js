@@ -1,7 +1,6 @@
 const body = document.body;
 sideMenuDriver(body);
 
-
 function sideMenuDriver(body) {
   const menuBtn = document.querySelector('.menu-icon');
   const sideMenuDriver = document.querySelector('.side-menu-diriver');

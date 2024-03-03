@@ -1,0 +1,170 @@
+.container-section {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     position: fixed;
+     width: 100%;
+}
+
+.login__image {
+     background-color: #fff8db;
+     height: 100vh;
+     width: 100%;
+     text-align: center;
+     margin: auto;
+     display: flex;
+     flex-direction: column;
+     gap: 1rem;
+}
+
+.login__image > h1 {
+     font-size: 2rem;
+     margin: 2rem 0rem;
+}
+
+.login__image > img {
+     width: 85%;
+     margin: auto;
+}
+
+.login_action-container {
+     text-align: center;
+     margin-top: 5%;
+}
+
+.login__action-text {
+     display: flex;
+     flex-direction: column;
+     gap: 1rem;
+     margin: 8% 0%;
+}
+
+.login__action-text p {
+     font-weight: 600;
+     color: var(--header-search-bar);
+}
+
+.login_action-container > form {
+     display: flex;
+     flex-direction: column;
+     gap: 1rem;
+}
+
+.login__button,
+.login__feild {
+     padding: 1%;
+     width: 70%;
+     margin: auto;
+     border-radius: 5px;
+}
+
+.login__feild {
+     border: 1px solid gray;
+}
+
+.login__button {
+     background-color: var(--text-teal);
+}
+
+.login__feild > input,
+.login__button > input {
+     padding: 0.7rem;
+     width: 100%;
+     background-color: transparent;
+     outline: none;
+     border: none;
+     font-size: 1rem;
+     font-weight: bolder;
+}
+
+.login__button > input {
+     color: white;
+}
+
+.login__seperator {
+     width: 65%;
+     margin: 1% auto;
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     gap: 0.5rem;
+}
+
+.login__seperator > div {
+     background-color: gray;
+     width: 100%;
+     height: 0.1rem;
+     border-radius: 1rem;
+}
+
+.login__button-container {
+     width: 55%;
+     margin: 3% auto;
+     gap: 1rem;
+     display: flex;
+     flex-direction: column;
+}
+
+.button__login {
+     border: 1px solid gray;
+     padding: 2%;
+     border-radius: 5px;
+     width: 100%;
+}
+.login__term{
+     width: 65%;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 1170px) {
+     .login__image{
+          display: none;
+     }
+     .container-section {
+
+          grid-template-columns: 1fr;
+     }
+}
+
+@media only screen and (max-width: 990px) {
+     .login__button,
+     .login__feild {
+          width: 65%;
+     }
+     .login__action-text{
+          margin: 1rem 0;
+     }
+     .button__login{
+          padding: 1%;
+     }
+  
+     .login__button-container,
+     .login__seperator ,
+     .login__button,
+     .login__feild{
+          width: 80%;
+     }
+     .button__login{
+          padding: 1%;
+     }
+}
+
+@media only screen and (max-width: 770px) {
+     .container-section{
+          margin: 3% 0%;
+          padding: 1rem;
+     }
+     .login__button,
+     .login__feild,
+     .login__seperator ,
+     .login__seperator ,
+     .login__term{
+          width: 100%;
+     }
+
+     .login__button-container {
+          width: 100%;
+     }
+     .button__login{
+          padding: 1%;
+     }
+}

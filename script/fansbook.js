@@ -22,7 +22,6 @@ async function searchImages() {
          const imege = document.createElement('img');
          imege.src = result.urls.small;
          imageContainer.append(imege)
-         console.log(result);
      })
      
      showMore.classList.add('show-search-image');

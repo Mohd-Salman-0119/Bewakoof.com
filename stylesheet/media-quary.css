@@ -1,7 +1,11 @@
 @media screen and (max-width: 990px) {
-
      .header-section-for-all .topBarWrapperHeader {
           visibility: hidden
+     }
+
+     .login__button,
+     .login__feild {
+          width: 80%;
      }
 
      .header-section-for-all .main-bar-wrapper-header {
@@ -67,6 +71,8 @@
           display: grid;
           grid-template-columns: repeat(4, 1fr);
      }
+
+
 }
 
 @media screen and (max-width: 1170px) {
@@ -78,6 +84,11 @@
           justify-content: space-between;
           padding: 0px 5px;
      }
+
+     .container-section {
+          grid-template-columns: 1fr;
+     }
+
 
 }
 
@@ -119,10 +130,20 @@
      .reponsive-none {
           display: none;
      }
+
      .swiper-button-next:after,
      .swiper-button-prev:after {
           width: 20px;
           font-size: 1rem;
           padding: 0;
+     }
+
+     .login__button,
+     .login__feild {
+          width: 100%;
+     }
+
+     .login__button-container {
+          width: 100%;
      }
 }
