@@ -8,5 +8,7 @@ authRoutes.post('/login', loginController);
 authRoutes.post('/register', signupController);
 authRoutes.route('/user').get(authorize, getUser);
 
+authRoutes.route('/google').get()
+
 
 module.exports = { authRoutes }

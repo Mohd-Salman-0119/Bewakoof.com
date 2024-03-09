@@ -30,7 +30,8 @@
      font-size: 19px;
      left: 50px;
      color: #000;
-     background-color: hsla(0, 0%, 100%, .4);;
+     background-color: hsla(0, 0%, 100%, .4);
+     ;
      opacity: .5px;
      padding: 14px 19px;
      width: 40px;
@@ -73,6 +74,7 @@ i {
      background-color: #ccc;
      margin: 10px 0;
 }
+
 /* =======================================
           Display Property Flex
 ==========================================
@@ -84,6 +86,7 @@ i {
 .d-block {
      display: block;
 }
+
 .d-none {
      display: none;
 }
@@ -107,6 +110,7 @@ i {
 .flex-col {
      flex-direction: column;
 }
+
 .flex-center {
      justify-content: center;
 }
@@ -125,6 +129,7 @@ i {
      display: grid;
      grid-template-columns: repeat(6, 1fr);
 }
+
 .grid8-1fr {
      display: grid;
      grid-template-columns: repeat(8, 1fr);
@@ -178,6 +183,7 @@ i {
      height: 40px;
      width: 40px;
 }
+
 .width30px {
      height: 30px;
      width: 30px;
@@ -201,6 +207,7 @@ i {
 .img100px-radius-4 {
      border-radius: 4px 4px 0px 0px;
 }
+
 .img100px-radius-all4 {
      border-radius: 4px;
 }
@@ -216,9 +223,11 @@ i {
 .text-align-strat {
      align-items: start;
 }
+
 .align-center {
      align-items: center;
 }
+
 /* 
 =========================================
           Collors 
@@ -252,7 +261,8 @@ i {
 .mega-link {
      color: var(--mega-link-blk);
 }
-.bg-dimwhite{
+
+.bg-dimwhite {
      background-color: var(--top-header-bg);
 }
 
@@ -276,6 +286,7 @@ i {
 .font14px {
      font-size: 14px;
 }
+
 .font48px {
      font-size: 48px;
 }
@@ -293,6 +304,7 @@ i {
 .mr-20px {
      margin: 0px 0px 1.25rem;
 }
+
 .mrAuto {
      margin: auto;
 }
@@ -304,9 +316,11 @@ i {
 .top4px {
      margin-top: 4px;
 }
+
 .tp4px {
      margin: 4px 0px;
 }
+
 .top10px {
      margin-top: 1.5rem;
 }
@@ -347,11 +361,13 @@ i {
 .pd-15px {
      padding: 15px;
 }
+
 .pdtb-15px {
-     padding:  15px 0px;
+     padding: 15px 0px;
 }
+
 .pdtb-10px {
-     padding:  10px 0px;
+     padding: 10px 0px;
 }
 
 .pd-10-15px {
@@ -361,15 +377,19 @@ i {
 .pd-0-30-0-0px {
      padding: 0px 30px 0px 0px;
 }
+
 .pd5px {
      padding: 5px;
 }
+
 .pd20trpx {
      padding: 20px 10px 0px 20px;
 }
+
 .pd-50pxR {
      padding: 0px 0px 50px 0px;
 }
+
 .pd-20pxR {
      padding-right: 20px;
 }
@@ -423,7 +443,7 @@ span {
 }
 
 .debug {
-     border: 2px solid blue;
+     background-color: 2px solid blue;
 }
 
 .position-abs {
@@ -431,32 +451,42 @@ span {
      top: 0;
      right: -120%;
 }
-.bfk-eye-logo i{
+
+.bfk-eye-logo i {
      font-size: 25px;
 }
-.width70per{
+
+.width70per {
      width: 70%;
      margin: auto;
 }
-.margin5per{
+
+.margin5per {
      margin-top: 6%;
 }
-.filterSizeTopMer{
+
+.filterSizeTopMer {
      margin-top: 25px;
 }
-.filterDesign{
+
+.filterDesign {
      text-decoration: none;
      display: block;
      width: 100%;
-     padding: 16px 18px; 
+     padding: 16px 18px;
      border: none;
      border-bottom: 1px solid #ccc;
 }
-.fa-chevron-down{
+
+.fa-chevron-down {
      font-size: 16px;
      color: #0E0E0E;
 }
 
-.forhover:hover{
+.forhover:hover {
      border-bottom: var(--link-color);
+}
+
+.cursor-pointer {
+     cursor: pointer;
 }

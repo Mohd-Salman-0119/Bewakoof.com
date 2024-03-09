@@ -1,6 +1,8 @@
+const BASE_URL = 'https://bewakoof-web-clone.vercel.app/api'
 
 hideBottomHeader();
 searchedItems();
+
 
 function hideBottomHeader() {
   const menuItems = document.querySelectorAll('.dropDwonMenuWrapper span');
@@ -22,26 +24,29 @@ function hideBottomHeader() {
   });
 }
 
+
+
 async function searchedItems() {
   const searchedItemContainer = document.querySelector('.search-feild-popup');
   const searchFeildControl = document.querySelector('.search-input-form-control');
   const searchInput = document.querySelector('[search-data]');
 
+
+
   let cardData = [];
   let brandQuantities = {};
 
   try {
-    const response = await fetch('/home/json/products.json');
+    const response = await fetch(`${BASE_URL}/products`);
     const data = await response.json();
-    const productsData = data.mensProduct;
 
-    productsData.forEach(ele => {
+    data.forEach(ele => {
       const brandName = ele.brand;
       brandQuantities[brandName] = (brandQuantities[brandName] || 0) + 1;
     })
     // console.log(brandQuantities);
 
-    cardData = productsData.map(ele => {
+    cardData = data.map(ele => {
       const showSearched = document.createElement('div');
       const anchor = document.createElement('a');
       anchor.classList.add('pd12px');
@@ -70,8 +75,6 @@ async function searchedItems() {
         element: showSearched,
       };
     });
-
-
 
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -141,3 +144,21 @@ window.addEventListener('load', function () {
     loadingContainer.style.display = 'none';
   }, 1000); // 10000 milliseconds (10 seconds)
 });
+
+
+function fetchProduct(query) {
+  return function (value = "") {
+    fetch(`${BASE_URL}/products?${query}&${value}`)
+      .then(res => res.json())
+      .then(data => {
+        count.innerHTML = `(${data.length})`
+        console.log(data)
+        productDataShow(data)
+      })
+      .catch(error => {
+        count.innerHTML = data.length
+        console.log(error)
+      })
+    console.log(query, value)
+  }
+}
